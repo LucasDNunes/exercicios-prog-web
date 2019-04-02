@@ -33,7 +33,6 @@ public class DbService {
                 .emails(Arrays.asList("aluno2@email1.com", "aluno2@email2.com"))
                 .build();
 
-        alunoRepository.saveAll(Arrays.asList(aluno1, aluno2));
 
         Disciplina disciplina1 = Disciplina.builder()
                 .nome("Disciplina 1")
@@ -44,8 +43,10 @@ public class DbService {
                 .nome("Disciplina 2")
                 .semestre(2)
                 .build();
-
         disciplinaRepository.saveAll(Arrays.asList(disciplina1, disciplina2));
+        aluno1.getDisciplinas().add(disciplina1);
+        aluno2.getDisciplinas().addAll(Arrays.asList(disciplina1,disciplina2));
+        alunoRepository.saveAll(Arrays.asList(aluno1, aluno2));
     }
 
 }

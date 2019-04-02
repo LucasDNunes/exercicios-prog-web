@@ -17,4 +17,5 @@ public class AlunoDto implements Serializable {
     private Long id;
     private String nome;
     private List<String> emails;
+    private List<DisciplinaDto> disciplinas;
 }

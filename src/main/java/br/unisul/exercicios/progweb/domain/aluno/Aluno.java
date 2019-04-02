@@ -1,6 +1,8 @@
 package br.unisul.exercicios.progweb.domain.aluno;
 
 import br.unisul.exercicios.progweb.core.entity.BaseEntity;
+import br.unisul.exercicios.progweb.domain.disciplina.Disciplina;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,4 +28,11 @@ public class Aluno implements BaseEntity {
     @ElementCollection
     @CollectionTable(name = "EMAIL")
     private List<String> emails = new ArrayList<>();
+
+    @Builder.Default
+    @ManyToMany
+    @JoinTable(name = "aluno_disciplina",
+            joinColumns = @JoinColumn(name = "aluno_id"),
+            inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
+    private List<Disciplina> disciplinas = new ArrayList<>();
 }
