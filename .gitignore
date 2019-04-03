@@ -1,0 +1,8 @@
+
+*.class
+
+\.idea/
+
+\.mvn/wrapper/
+
+target/classes/
